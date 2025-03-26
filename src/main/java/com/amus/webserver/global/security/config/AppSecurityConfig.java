@@ -35,7 +35,12 @@ public class AppSecurityConfig {
                                 headers.frameOptions(
                                         HeadersConfigurer.FrameOptionsConfig::sameOrigin
                                 )
-                );
+                )
+                .formLogin(
+                        login ->
+                                login.disable()
+                        )
+        ;
 
         return http.build();
     }

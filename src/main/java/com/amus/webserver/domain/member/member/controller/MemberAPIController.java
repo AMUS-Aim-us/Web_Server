@@ -1,6 +1,6 @@
 package com.amus.webserver.domain.member.member.controller;
 
-import com.amus.webserver.domain.member.member.controller.dto.MemberDto;
+import com.amus.webserver.domain.member.member.dto.MemberDto;
 import com.amus.webserver.global.security.config.Container;
 import com.amus.webserver.global.security.config.DtoContainer;
 import org.springframework.http.ResponseEntity;
@@ -13,6 +13,10 @@ import org.springframework.web.bind.annotation.RestController;
 public class MemberAPIController {
     @PostMapping("/sign")
     public ResponseEntity<Container> signMember(){
-        return ResponseEntity.ok().body(new DtoContainer("등록에 성공했습니다.", new MemberDto()));
+        DtoContainer<MemberDto> container = new DtoContainer<>(
+                "등록에 성공했습니다.",
+                null
+        );
+        return ResponseEntity.ok().body(container);
     }
 }
